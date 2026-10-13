@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1225">
+  <meta name="description" content="Unidos Sempre — painel de clientes, compras conjuntas, compras individuais e monitoramento de kits do Hay Day.">
+  <title>Unidos Sempre | Painel de Clientes</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="login-screen" class="login-screen" hidden>
+    <div class="login-art">
+      <div class="login-art-inner">
+        <div class="brand-mark large">US</div>
+        <span class="eyebrow gold">PAINEL DE GESTÃO</span>
+        <h1>Todos os pedidos.<br><span>Um só lugar.</span></h1>
+        <p>Gestão de clientes, compras conjuntas, compras individuais e prazos de coleta.</p>
+        <div class="login-feature"><span>✓</span> Administrador e cliente em áreas separadas</div>
+        <div class="login-feature"><span>✓</span> Dados sincronizados com segurança</div>
+        <div class="login-feature"><span>✓</span> Monitoramento de kits e entregas</div>
+      </div>
+    </div>
+    <div class="login-form-area">
+      <form id="login-form" class="login-card">
+        <div class="mobile-login-logo"><span class="brand-mark">US</span> Unidos Sempre</div>
+        <span class="eyebrow">ACESSO AO PAINEL</span>
+        <h2>Bem-vindo de volta</h2>
+        <p>Entre com as credenciais cadastradas pelo administrador.</p>
+        <label for="login-email">E-mail</label>
+        <input id="login-email" type="email" required autocomplete="username" placeholder="seu@email.com">
+        <label for="login-password">Senha</label>
+        <input id="login-password" type="password" required autocomplete="current-password" minlength="6" placeholder="Sua senha">
+        <button class="btn btn-primary full" type="submit" id="login-submit">Entrar no painel <span>→</span></button>
+        <p class="form-alert" id="login-error" role="alert"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="app-shell" id="app" hidden>
+    <div class="mobile-scrim" id="mobile-scrim"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">US</div>
+        <div><strong>Unidos Sempre</strong><small>PAINEL DE CLIENTES</small></div>
+      </div>
+      <div class="workspace-label">ESPAÇO DE TRABALHO</div>
+      <nav class="nav" aria-label="Menu principal">
+        <button class="nav-link active" data-nav="dashboard"><span class="nav-icon">▦</span><span>Visão geral</span></button>
+        <button class="nav-link" data-nav="clients"><span class="nav-icon">♧</span><span>Clientes</span></button>
+        <button class="nav-link" data-nav="purchases"><span class="nav-icon">◈</span><span>Compras</span></button>
+        <button class="nav-link" data-nav="orders"><span class="nav-icon">▤</span><span>Pedidos</span></button>
+        <button class="nav-link" data-nav="monitor"><span class="nav-icon">◷</span><span>Monitoramento</span><span class="count-dot" id="alert-count" hidden>0</span></button>
+      </nav>
+      <div class="workspace-label tools-label">FERRAMENTAS</div>
+      <nav class="nav"><button class="nav-link" data-nav="settings"><span class="nav-icon">⚙</span><span>Configurações</span></button></nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-help"><div class="help-symbol">✦</div><strong>Organize seus kits</strong><p>Controle solicitações, pagamentos e o prazo de 20 horas em um só painel.</p></div>
+        <div class="sidebar-profile"><span class="avatar" id="side-avatar">AD</span><div class="profile-text"><strong id="side-name">Administrador</strong><small id="side-role">Modo demonstração</small></div><button class="icon-btn" id="logout-side" title="Sair" aria-label="Sair" hidden>⇥</button></div>
+      </div>
+    </aside>
+    <div class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left"><button id="mobile-menu" class="icon-btn menu-btn" aria-label="Abrir menu">☰</button><div class="crumb">Unidos Sempre <span>/</span> <strong id="crumb-current">Visão geral</strong></div></div>
+        <div class="topbar-actions"><span id="sync-pill" class="sync-pill"><span class="online-dot"></span> Demonstração</span><span id="today-text" class="today"></span><div class="mini-avatar" id="top-avatar">AD</div></div>
+      </header>
+      <main id="content" class="content" tabindex="-1"></main>
+      <footer class="footer">Unidos Sempre · Gestão de Clientes <span>Feito para simplificar seus pedidos</span></footer>
+    </div>
+  </div>
+  <div id="modal-layer" class="modal-layer" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
